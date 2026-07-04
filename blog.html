@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="bpaas-design-system" content="brutalist-avantgarde">
+    <meta name="bpaas-design-theme" content="kr-raw-concrete">
+    <meta name="description" content="상암 유흥 블로그 – 브로들의 진짜 밤 문화 로그. 정보성 글: 상암에서 진짜를 찾는 법. 전화 010-6279-0862로 지금 바로 예약하세요.">
+    <meta name="keywords" content="상암 유흥, 상암 유흥 가이드, 상암 밤문화, 상암 술집, 상암 클럽, 상암 유흥주점, 브로들의 밤, 상암 핫플, 상암 블로그">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://t3b08-sa-night-guide-1.vercel.app/blog">
+    <meta property="og:title" content="상암 유흥 블로그 | 브로들의 진짜 밤 문화">
+    <meta property="og:description" content="상암 유흥 블로그 – 브로들의 진짜 밤 문화. 정보성 글: 상암에서 진짜를 찾는 법.">
+    <title>블로그 – 상암 유흥 가이드</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #1c1c1c;
+            color: #f0ede6;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.6;
+            padding: 0 1.5rem;
+            position: relative;
+            min-height: 100vh;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 6px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 3px solid #d9b36a;
+            position: relative;
+            z-index: 20;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.08em;
+            text-transform: uppercase;
+            color: #d9b36a;
+            border-left: 6px solid #d9b36a;
+            padding-left: 0.6rem;
+        }
+        .logo span {
+            display: inline-block;
+            background: #d9b36a;
+            color: #1c1c1c;
+            padding: 0 0.4rem;
+            margin-left: 0.2rem;
+        }
+        nav ul {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+        }
+        nav a {
+            color: #f0ede6;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: -0.03em;
+            border-bottom: 2px solid transparent;
+            transition: 0.15s;
+        }
+        nav a:hover {
+            border-bottom-color: #d9b36a;
+            color: #d9b36a;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: #f0ede6;
+            border-radius: 2px;
+        }
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #2a2a2a;
+            border: 2px solid #d9b36a;
+            padding: 1.5rem 2rem;
+            z-index: 30;
+            min-width: 220px;
+        }
+        .mobile-nav.active {
+            display: block;
+        }
+        .mobile-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .mobile-nav a {
+            color: #f0ede6;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-bottom: 1px solid #555;
+            padding-bottom: 0.3rem;
+        }
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 0 5rem;
+            position: relative;
+            z-index: 10;
+        }
+        .hero {
+            border-left: 6px solid #d9b36a;
+            padding-left: 1.8rem;
+            margin-bottom: 3.5rem;
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -0.06em;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            color: #bbb;
+            max-width: 600px;
+        }
+        /* 블로그 포스트 스타일 (기존 카드 스타일 변형 없음) */
+        .blog-post {
+            background: #242424;
+            border: 2px solid #3a3a3a;
+            padding: 2rem 2rem 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 8px 8px 0 #0f0f0f;
+        }
+        .blog-post h2 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+            border-left: 8px solid #d9b36a;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+            color: #d9b36a;
+        }
+        .blog-post .meta {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 1.8rem;
+            border-bottom: 1px dashed #444;
+            padding-bottom: 0.5rem;
+        }
+        .blog-post p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+        .blog-post strong {
+            color: #d9b36a;
+        }
+        .blog-post .highlight {
+            background: #2f2f2f;
+            border-left: 4px solid #d9b36a;
+            padding: 0.8rem 1.2rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+        .blog-post .callout {
+            display: inline-block;
+            background: #d9b36a;
+            color: #1c1c1c;
+            font-weight: 700;
+            padding: 0.3rem 1rem;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+        .blog-post a.tel-link {
+            color: #d9b36a;
+            text-decoration: underline wavy;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .faq {
+            margin-top: 3rem;
+            border-top: 3px solid #d9b36a;
+            padding-top: 2rem;
+        }
+        .faq h3 {
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.2rem;
+        }
+        .faq-item {
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.8rem;
+        }
+        .faq-item strong {
+            display: block;
+            font-size: 1.2rem;
+            color: #d9b36a;
+        }
+        .faq-item p {
+            margin-top: 0.3rem;
+            color: #ccc;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 0 1rem;
+            }
+            nav ul {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .blog-post {
+                padding: 1.5rem;
+            }
+            .blog-post h2 {
+                font-size: 1.6rem;
+            }
+        }
+        /* 기존 tel-link 패턴 */
+        .tel-link {
+            color: #d9b36a;
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 2px solid #d9b36a;
+        }
+        .tel-link:hover {
+            background: #d9b36a;
+            color: #1c1c1c;
+        }
+    </style>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+    <header>
+        <div class="logo">상암<span>BRO</span></div>
+        <nav>
+            <ul>
+                <li><a href="/">홈</a></li>
+                <li><a href="/blog">블로그</a></li>
+                <li><a href="/guide">가이드</a></li>
+                <li><a href="/contact">문의</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger" aria-label="메뉴 열기" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="mobile-nav">
+            <ul>
+                <li><a href="/">홈</a></li>
+                <li><a href="/blog">블로그</a></li>
+                <li><a href="/guide">가이드</a></li>
+                <li><a href="/contact">문의</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>BRO들의 블로그</h1>
+            <p>정보는 힘, 특히 밤 문화에서는. 상암의 진짜를 파헤친다.</p>
+        </section>
+
+        <!-- 정보성 글 1편 (블로그 포스트) -->
+        <article class="blog-post">
+            <h2>상암에서 '가짜'를 걸러내는 법</h2>
+            <div class="meta">2025.03.21 · 작성자: 브로들 에디터 · 카테고리: 밤 문화 해부</div>
+            <p><strong>상암, 너는 누구냐.</strong> 간판만 번지르르한 곳이 수두룩하다. 브로들은 가식에 돈 쓰지 않는다. 우리가 원하는 건 <strong>리얼한 분위기, 진짜 서비스, 그리고 계산서에 거품 없는 가격</strong>. 이 동네에서 '검증된 루트'를 아는 게 곧 야생의 생존법이다.</p>
+            <div class="highlight">“간판에 'VIP' '럭셔리' 붙었다고 쫄지 마라. 진짜는 입구의 공기부터 다르다.” — 브로들의 잠언</div>
+            <p>상암에서 진짜 유흥을 찾는 첫 번째 규칙: <strong>가성비를 외치는 곳은 의심하라</strong>. 대신 현지 브로들이 자주 가는 언더그라운드 스팟, 직원들이 오래 버티는 업소가 진짜다. 두 번째, 전화 한 통이면 모든 게 바뀐다. 번호 하나로 분위기를 바꿀 수 있는 힘, 그게 브로들의 커넥션이다.</p>
+            <p><strong>세 번째이자 가장 중요한 규칙:</strong> 직접 발로 뛰어라. 블로그에 적힌 후기 100개보다, 실제로 문을 열고 들어가는 용기가 더 정확하다. 상암의 밤은 거침없는 놈들을 반긴다. </p>
+            <p><span class="callout">BRO TIP</span> 지금 당장 전화해봐. <a href="tel:010-6279-0862" class="tel-link">010-6279-0862</a> — 이 번호는 진짜를 아는 사람만 건다. 상담은 간단하게, 예약은 확실하게.</p>
+            <p style="margin-top: 1.8rem;">결론: 상암에서 길을 잃지 마라. 핫플은 금방 식고, 진짜는 시간이 증명한다. 우리는 이미 그 시간을 겪었다. <strong>브로들의 가이드를 믿고 움직여라.</strong></p>
+        </article>
+
+        <!-- FAQ 영역 (블로그 컨텍스트에 맞게 정보성 faq) -->
+        <section class="faq">
+            <h3>블로그 FAQ · 브로들이 묻는다</h3>
+            <div class="faq-item">
+                <strong>Q: 상암에서 첫 방문인데, 어디부터 가야 하나?</strong>
+                <p>A: 일단 전화해. 010-6279-0862. 우리가 딱 맞는 루트 짜준다. 블로그 보지 말고 행동해.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Q: 정보성 글인데 왜 전화번호가 계속 나와?</strong>
+                <p>A: 글로만 배우면 뭐하나. 진짜 정보는 전화 너머에 있다. 브로들은 입으로 전하는 정보를 더 신뢰한다.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Q: 이 블로그, 광고 아니야?</strong>
+                <p>A: 광고? 우리는 추천한다. 단, 진짜라서. 직접 경험하고 돈 내본 곳만 여기 적는다. 나머지는 걸러 들어라.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Q: 다음 블로그 글은 언제 올라와?</strong>
+                <p>A: 급하면 전화해. '블로그 다음 편'이라고 말해. 그게 더 빠르다. 010-6279-0862.</p>
+            </div>
+        </section>
+
+        <!-- 추가 푸터 역할 (디자인 시스템 내) -->
+        <div style="margin-top: 4rem; border-top: 2px solid #333; padding-top: 1.5rem; font-size: 0.9rem; color: #777; text-align: center;">
+            <span>상암 유흥 블로그 · 브로들의 진짜 밤 문화 로그</span><br>
+            <span>문의·예약: <a href="tel:010-6279-0862" class="tel-link" style="color:#d9b36a;">010-6279-0862</a></span>
+        </div>
+    </main>
+    <script>
+        // 모바일 네비게이션 외부 클릭 시 닫기 (선택적)
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('header')) {
+                document.querySelector('.mobile-nav')?.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
